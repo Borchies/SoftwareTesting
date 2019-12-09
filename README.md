@@ -6,3 +6,4 @@
 |count   | Tabea | Black |
 |zip_longest | Tabea | Black |
 |accumulate  | Tabea | Black |
+| compress | Iker | Black |

@@ -1,0 +1,7 @@
+# Python related
+.env
+__pycache__/
+
+# VSCode related
+.vscode/
+.pylintrc
