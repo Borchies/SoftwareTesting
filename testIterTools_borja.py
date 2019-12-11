@@ -31,6 +31,7 @@ class TestIterToolsB(unittest.TestCase):
 		self.assertRaises(TypeError, combinations, 5) # testing TypeError: first argument is not an iterable
 		self.assertRaises(TypeError, combinations) # testing TypeError: no argument given
 		self.assertRaises(ValueError, combinations, self.string1, -3) # testing ValueError: 'r' argument is a negative number
+		self.assertRaises(MemoryError, combinations, self.string1, 3**20) #testing MemoryError: operation runs out of memory because the groups are too large
 
 		
 
@@ -52,6 +53,7 @@ class TestIterToolsB(unittest.TestCase):
 		self.assertRaises(TypeError, combinations_with_replacement, 5) # testing TypeError: first argument is not an iterable
 		self.assertRaises(TypeError, combinations_with_replacement) # testing TypeError: no argument given
 		self.assertRaises(ValueError, combinations_with_replacement, self.string1, -3) # testing ValueError: 'r' argument is a negative number
+		self.assertRaises(MemoryError, combinations_with_replacement, self.string1, 3**20) # testing MemoryError: operation runs out of memory because the groups are too large
 
 
 	def testCycle(self):
@@ -62,6 +64,7 @@ class TestIterToolsB(unittest.TestCase):
 		self.assertEqual(list(islice(cycle(self.string1), 0)), list("")) #testing a string with 0 cycles
 
 		self.assertRaises(TypeError, cycle, 3) # testing TypeError: argument is not an iterable
+		self.assertRaises(TypeError, cycle, self.string1, 4) #testing TypeError: extra argument
 		self.assertRaises(TypeError, cycle) # testing TypeError: no argument given
 
 if __name__ == '__main__':
