@@ -3,6 +3,11 @@ import unittest
 
 
 def compress_str(data, selectors) -> str:
+    """
+    Helper function to get a string from the call to `it.compress(data, selectors)`.
+
+    Appends all the elements the iterator returns one after the other.
+    """
     def iterator_to_str(iterator: it) -> str:
         if iterator is None:
             return ''
@@ -14,12 +19,14 @@ def compress_str(data, selectors) -> str:
 
 
 class TestCompress(unittest.TestCase):
+    """Test class to test the `itertools.compress` function."""
 
     def test_example_documentation(self):
+        """Example test cases from the documentation."""
         self.assertEqual(compress_str('ABCDEF', [1, 0, 1, 0, 1, 1]), 'ACEF')
 
     def test_expected_input(self):
-        """Expected input == str and binary list, both of same length."""
+        """Expected input (string and binary interger list of the same length) are given."""
         self.assertEqual(compress_str('ABC', [0, 0, 0]), '')
         self.assertEqual(compress_str('ABC', [1, 1, 1]), 'ABC')
         self.assertEqual(compress_str('ABC', [1, 0, 1]), 'AC')
@@ -32,7 +39,7 @@ class TestCompress(unittest.TestCase):
         self.assertEqual(compress_str('ABC', [1 for i in range(10)]), 'ABC')
 
     def test_none_list(self):
-        """The given list is None or a list containing Nones."""
+        """Either the given list is None or a list containing Nones."""
         self.assertRaises(TypeError, lambda: compress_str('ABC', None))
         self.assertRaises(TypeError, lambda: compress_str('', None))
         self.assertEqual(compress_str('ABC', [None, None, None]), '')
@@ -58,7 +65,6 @@ class TestCompress(unittest.TestCase):
     def test_list_other_integers(self):
         """
         An integer list of same length as the string.
-
         Returns all but int(0).
         """
         self.assertEqual(compress_str('ABC', [0, 1, 2]), 'BC')
@@ -68,7 +74,6 @@ class TestCompress(unittest.TestCase):
     def test_list_strs(self):
         """
         A string list of same length as the string.
-
         Returns all but int(0). Strings are used in this test, so only '' matches with False.
         """
         self.assertEqual(compress_str('ABC', ['a', 'b', 'c']), 'ABC')
@@ -76,9 +81,7 @@ class TestCompress(unittest.TestCase):
         self.assertEqual(compress_str('ABC', ['.', '', '-']), 'AC')
 
     def test_float(self):
-        """
-        A float list of same length as the string.
-        """
+        """A float list of same length as the string."""
         self.assertEqual(compress_str('ABC', [-1.0, 0, 1.0]), 'AC')
         self.assertEqual(compress_str('ABC', [-10.5, 29.3, 0]), 'AB')
         self.assertEqual(compress_str('ABC', [-0.0, +0.0, 1]), 'C')
@@ -86,7 +89,6 @@ class TestCompress(unittest.TestCase):
     def test_list_multiple_types(self):
         """
         A list containing items of multiple types.
-
         Multiple types is viable. Only 0, False and '' don't match.
         """
         self.assertEqual(compress_str('ABC', [False, 1.0, 'a']), 'BC')

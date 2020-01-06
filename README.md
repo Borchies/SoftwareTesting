@@ -7,3 +7,5 @@
 |zip_longest | Tabea | Black |
 |accumulate  | Tabea | Black |
 | compress | Iker | Black |
+| islice | Iker | Black |
+| starmap | Iker | Black |
