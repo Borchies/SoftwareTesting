@@ -9,3 +9,6 @@
 | compress | Iker | Black |
 | islice | Iker | Black |
 | starmap | Iker | Black |
+| Takewhile | Kannan | Black |
+| Dropwhile | Kannan | Black |
+| Chain.from_iterable | Kannan | Black |
