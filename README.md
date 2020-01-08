@@ -12,3 +12,6 @@
 | Takewhile | Kannan | Black |
 | Dropwhile | Kannan | Black |
 | Chain.from_iterable | Kannan | Black |
+| Combinations | Borja | Black and White|
+| Combinations with replacement | Borja | Black|
+| cycle | Borja | Black|
