@@ -510,9 +510,9 @@ class TestCompress(unittest.TestCase):
 
     def test_boolean_list_shorter(self):
         """The given list is shorter than the length of the string."""
-        self.assertEqual(compress_str('ABCDEF', [0, 0]), '')
-        self.assertEqual(compress_str('ABCDEF', [0, 1]), 'B')
-        self.assertEqual(compress_str('ABCDEF', [1, 1]), 'AB')
+        self.assertEqual(compress_str('ABCDEF', [False, False]), '')
+        self.assertEqual(compress_str('ABCDEF', [False, True]), 'B')
+        self.assertEqual(compress_str('ABCDEF', [True, True]), 'AB')
 
     def test_boolean_list_equal_length(self):
         """A boolean list instead of binary integer list of the same length as the string."""
