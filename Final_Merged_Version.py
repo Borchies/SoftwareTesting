@@ -347,7 +347,7 @@ def iterator_to_string(iterator: it):
     return result
 
 
-class Testit.islice(unittest.TestCase):
+class Testit_islice(unittest.TestCase):
     """Test class to test the `itertools.compress` function."""
 
     def test_example_documentation(self):
