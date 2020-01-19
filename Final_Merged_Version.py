@@ -347,35 +347,35 @@ def iterator_to_string(iterator: it):
     return result
 
 
-class TestIslice(unittest.TestCase):
+class Testit.islice(unittest.TestCase):
     """Test class to test the `itertools.compress` function."""
 
     def test_example_documentation(self):
         """Example test cases from the documentation."""
         string = 'ABCDEFG'
-        self.assertEqual(iterator_to_string(it.islice(string, 2)), 'AB')
-        self.assertEqual(iterator_to_string(it.islice(string, 2, 4)), 'CD')
-        self.assertEqual(iterator_to_string(it.islice(string, 2, None)), 'CDEFG')
-        self.assertEqual(iterator_to_string(it.islice(string, 0, None, 2)), 'ACEG')
+        self.assertEqual(iterator_to_string(it.it.islice(string, 2)), 'AB')
+        self.assertEqual(iterator_to_string(it.it.islice(string, 2, 4)), 'CD')
+        self.assertEqual(iterator_to_string(it.it.islice(string, 2, None)), 'CDEFG')
+        self.assertEqual(iterator_to_string(it.it.islice(string, 0, None, 2)), 'ACEG')
 
     def test_ints_out_bounds(self):
         """Using integer parameters bigger than expected."""
         string = 'ABCDEFG'
         bigger_bounds = len(string) + 1
-        self.assertEqual(iterator_to_string(it.islice(string, bigger_bounds)), string)
-        self.assertEqual(iterator_to_string(it.islice(string, bigger_bounds, bigger_bounds)), '')
-        self.assertEqual(iterator_to_string(it.islice(string, bigger_bounds, bigger_bounds + 5)), '')
-        self.assertEqual(iterator_to_string(it.islice(string, bigger_bounds, None)), '')
-        self.assertEqual(iterator_to_string(it.islice(string, bigger_bounds, None, 50)), '')
+        self.assertEqual(iterator_to_string(it.it.islice(string, bigger_bounds)), string)
+        self.assertEqual(iterator_to_string(it.it.islice(string, bigger_bounds, bigger_bounds)), '')
+        self.assertEqual(iterator_to_string(it.it.islice(string, bigger_bounds, bigger_bounds + 5)), '')
+        self.assertEqual(iterator_to_string(it.it.islice(string, bigger_bounds, None)), '')
+        self.assertEqual(iterator_to_string(it.it.islice(string, bigger_bounds, None, 50)), '')
 
     def test_int_smaller_bounds(self):
         """Using integer parameters smaller than expected, but still positive."""
         string = 'ABCDEFG'
         small_bounds = 0 if len(string) == 0 else int(len(string) / 2)  # Must be int in [0, len(string)-1]
-        self.assertEqual(iterator_to_string(it.islice(string, small_bounds)), 'ABC')
-        self.assertEqual(iterator_to_string(it.islice(string, 0, 0 if small_bounds == 0 else small_bounds - 1)), 'AB')
-        self.assertEqual(iterator_to_string(it.islice(string, small_bounds, small_bounds)), '')
-        self.assertEqual(iterator_to_string(it.islice(string, small_bounds, len(string) - 1, small_bounds)), 'D')
+        self.assertEqual(iterator_to_string(it.it.islice(string, small_bounds)), 'ABC')
+        self.assertEqual(iterator_to_string(it.it.islice(string, 0, 0 if small_bounds == 0 else small_bounds - 1)), 'AB')
+        self.assertEqual(iterator_to_string(it.it.islice(string, small_bounds, small_bounds)), '')
+        self.assertEqual(iterator_to_string(it.it.islice(string, small_bounds, len(string) - 1, small_bounds)), 'D')
 
     def test_ints_negative(self):
         """
@@ -384,17 +384,17 @@ class TestIslice(unittest.TestCase):
         """
         string = 'ABCDEFG'
         smaller_bounds = -1 * (len(string) + 1)
-        self.assertRaises(ValueError, lambda: it.islice(string, smaller_bounds))
-        self.assertRaises(ValueError, lambda: it.islice(string, smaller_bounds, None))
-        self.assertRaises(ValueError, lambda: it.islice(string, smaller_bounds, -5))
+        self.assertRaises(ValueError, lambda: it.it.islice(string, smaller_bounds))
+        self.assertRaises(ValueError, lambda: it.it.islice(string, smaller_bounds, None))
+        self.assertRaises(ValueError, lambda: it.it.islice(string, smaller_bounds, -5))
 
     def test_floats_out_bounds(self):
         """Using floats as parameters, bigger than expected. Raises ValueError because integers are expected."""
         string = 'ABCDEFG'
         bigger_bounds = float(len(string) + 0.5)
-        self.assertRaises(ValueError, lambda: it.islice(string, bigger_bounds))
-        self.assertRaises(ValueError, lambda: it.islice(string, bigger_bounds, bigger_bounds))
-        self.assertRaises(ValueError, lambda: it.islice(string, bigger_bounds, bigger_bounds + 5))
+        self.assertRaises(ValueError, lambda: it.it.islice(string, bigger_bounds))
+        self.assertRaises(ValueError, lambda: it.it.islice(string, bigger_bounds, bigger_bounds))
+        self.assertRaises(ValueError, lambda: it.it.islice(string, bigger_bounds, bigger_bounds + 5))
 
     def test_floats_smaller_bounds(self):
         """
@@ -403,24 +403,24 @@ class TestIslice(unittest.TestCase):
         """
         string = 'ABCDEFG'
         smaller_bounds = float(0) if len(string) == 0 else float(len(string) + 0.5)
-        self.assertRaises(ValueError, lambda: it.islice(string, smaller_bounds))
-        self.assertRaises(ValueError, lambda: it.islice(string, smaller_bounds, smaller_bounds))
-        self.assertRaises(ValueError, lambda: it.islice(string, smaller_bounds, 0.7))
+        self.assertRaises(ValueError, lambda: it.it.islice(string, smaller_bounds))
+        self.assertRaises(ValueError, lambda: it.it.islice(string, smaller_bounds, smaller_bounds))
+        self.assertRaises(ValueError, lambda: it.it.islice(string, smaller_bounds, 0.7))
 
     def test_floats_negative(self):
         """Using negative floats as parameters. Raises ValueError because integers are expected."""
         string = 'ABCDEFG'
         smaller_bounds = float(-1 * (len(string) + 1.5))
-        self.assertRaises(ValueError, lambda: it.islice(string, smaller_bounds))
-        self.assertRaises(ValueError, lambda: it.islice(string, smaller_bounds, None))
+        self.assertRaises(ValueError, lambda: it.it.islice(string, smaller_bounds))
+        self.assertRaises(ValueError, lambda: it.it.islice(string, smaller_bounds, None))
 
     def test_strings(self):
         """Using Strings as paramters. Raises ValueError because integers are expected."""
         string = 'ABCDEFG'
-        self.assertRaises(ValueError, lambda: it.islice(string, 'A'))
-        self.assertRaises(ValueError, lambda: it.islice(string, 'a'))
-        self.assertRaises(ValueError, lambda: it.islice(string, '0'))
-        self.assertRaises(ValueError, lambda: it.islice(string, 'True'))
+        self.assertRaises(ValueError, lambda: it.it.islice(string, 'A'))
+        self.assertRaises(ValueError, lambda: it.it.islice(string, 'a'))
+        self.assertRaises(ValueError, lambda: it.it.islice(string, '0'))
+        self.assertRaises(ValueError, lambda: it.it.islice(string, 'True'))
 
     def test_booleans(self):
         """
@@ -429,33 +429,33 @@ class TestIslice(unittest.TestCase):
         However, only works for the first element in the string.
         """
         string = 'ABCDEFG'
-        self.assertEqual(iterator_to_string(it.islice(string, False)), '')
-        self.assertEqual(iterator_to_string(it.islice(string, True)), string[0])
+        self.assertEqual(iterator_to_string(it.it.islice(string, False)), '')
+        self.assertEqual(iterator_to_string(it.it.islice(string, True)), string[0])
 
     def test_int_list_iterable(self):
         """Using lists of integers as parameters. Raises ValueError because integers are expected."""
         string = 'ABCDEFG'
-        self.assertRaises(ValueError, lambda: it.islice(string, [0, 1]))
-        self.assertRaises(ValueError, lambda: it.islice(string, [-1, 7]))
+        self.assertRaises(ValueError, lambda: it.it.islice(string, [0, 1]))
+        self.assertRaises(ValueError, lambda: it.it.islice(string, [-1, 7]))
 
     def test_float_list_iterable(self):
         """Using lists of floats as parameters. Raises ValueError because integers are expected."""
         string = 'ABCDEFG'
-        self.assertRaises(ValueError, lambda: it.islice(string, [-1.75, 1.5]))
-        self.assertRaises(ValueError, lambda: it.islice(string, [7.46, 2.93]))
+        self.assertRaises(ValueError, lambda: it.it.islice(string, [-1.75, 1.5]))
+        self.assertRaises(ValueError, lambda: it.it.islice(string, [7.46, 2.93]))
 
     def test_tuples(self):
         """Using tuples as parameters. Raises ValueError because integers are expected."""
         string = 'ABCDEFG'
-        self.assertRaises(ValueError, lambda: it.islice(string, (None, None)))
-        self.assertRaises(ValueError, lambda: it.islice(string, (False, True)))
-        self.assertRaises(ValueError, lambda: it.islice(string, (1, 0)))
-        self.assertRaises(ValueError, lambda: it.islice(string, ('A', '1')))
+        self.assertRaises(ValueError, lambda: it.it.islice(string, (None, None)))
+        self.assertRaises(ValueError, lambda: it.it.islice(string, (False, True)))
+        self.assertRaises(ValueError, lambda: it.it.islice(string, (1, 0)))
+        self.assertRaises(ValueError, lambda: it.it.islice(string, ('A', '1')))
 
     def test_tuple_list_iterable(self):
         """Using lists of tuples as parameters. Raises ValueError because integers are expected."""
         string = 'ABCDEFG'
-        self.assertRaises(ValueError, lambda: it.islice(string, [(True, False), (1, 0)]))        
+        self.assertRaises(ValueError, lambda: it.it.islice(string, [(True, False), (1, 0)]))        
 
     def test_nones(self):
         """
@@ -464,9 +464,9 @@ class TestIslice(unittest.TestCase):
         Otherwise, returns the string itself.
         """
         string = 'ABCDEFG'
-        self.assertRaises(TypeError, lambda: iterator_to_string(it.islice(None, None)))
-        self.assertEqual(iterator_to_string(it.islice(string, None)), string)
-        self.assertEqual(iterator_to_string(it.islice(string, None, None)), string)
+        self.assertRaises(TypeError, lambda: iterator_to_string(it.it.islice(None, None)))
+        self.assertEqual(iterator_to_string(it.it.islice(string, None)), string)
+        self.assertEqual(iterator_to_string(it.it.islice(string, None, None)), string)
         
 def compress_str(data, selectors) -> str:
     """
@@ -773,6 +773,71 @@ class TestCode(unittest.TestCase):
         self.assertEqual(code_anwar.fitest(['']), [''])
 
 
+class TestIterToolsB(unittest.TestCase):
+	"""Functionsfortestingtheextractionofauthornames.
+	NotethattherulesforextractingitertoolsBauthornamesisactually
+	quitecomplicated.Asthesetestcasesillustrate.Ihaven’t
+	implementedallthecases."""
+	def setUp(self):
+		self.string1="ABCD"
+		self.string2="ABCD "
+		self.numList1=[1,2,3,4,5,6,7]
+		self.numList2=[1,2,2,3,3,4,5]
+		self.multiList2=[2,'',(2,4),"Hello",5]
+
+	def testcombinations(self):
+		
+		numCombs = len(list(it.combinations(self.string1,2)))
+		self.assertEqual(numCombs,6) # testing a string
+		numCombs = len(list(it.combinations(self.string2,2)))
+		self.assertEqual(numCombs,10) # testing a string with a space		
+		numCombs = len(list(it.combinations(self.numList1,4)))
+		self.assertEqual(numCombs,35) # testing a list of numbers
+		numCombs = len(list(it.combinations(self.numList2,2)))
+		self.assertEqual(numCombs,21) # testing a list of numbers with repeated elements
+		numCombs = len(list(it.combinations(self.multiList2,2)))
+		self.assertEqual(numCombs,10) # testing a polymorphic list
+
+		self.assertRaises(TypeError, it.combinations, self.string1) # testing TypeError: 'r' argument is missing
+		self.assertRaises(TypeError, it.combinations, self.string1, 3, 6) # testing TypeError: extra argument
+		self.assertRaises(TypeError, it.combinations, 5) # testing TypeError: first argument is not an iterable
+		self.assertRaises(TypeError, it.combinations) # testing TypeError: no argument given
+		self.assertRaises(ValueError, it.combinations, self.string1, -3) # testing ValueError: 'r' argument is a negative number
+		self.assertRaises(MemoryError, it.combinations, self.string1, 3**20) #testing MemoryError: operation runs out of memory because the groups are too large
+
+		
+
+	def testcombinationsWithRep(self):
+		
+		numCombs = len(list(it.combinations_with_replacement(self.string1,2)))
+		self.assertEqual(numCombs,10) # testing a string
+		numCombs = len(list(it.combinations_with_replacement(self.string2,2)))
+		self.assertEqual(numCombs,15) # testing a string with a space
+		numCombs = len(list(it.combinations_with_replacement(self.numList1,4)))
+		self.assertEqual(numCombs,210) # testing a list of nummbers
+		numCombs = len(list(it.combinations_with_replacement(self.numList2,2)))
+		self.assertEqual(numCombs,28) # testing a list of numbers with repeated elements
+		numCombs = len(list(it.combinations_with_replacement(self.multiList2,2)))
+		self.assertEqual(numCombs,15) # testing a polymorphic list
+
+		self.assertRaises(TypeError, it.combinations_with_replacement, self.string1) # testing TypeError: 'r' argument is missing
+		self.assertRaises(TypeError, it.combinations_with_replacement, self.string1, 3, 6) # testing TypeError: extra argument
+		self.assertRaises(TypeError, it.combinations_with_replacement, 5) # testing TypeError: first argument is not an iterable
+		self.assertRaises(TypeError, it.combinations_with_replacement) # testing TypeError: no argument given
+		self.assertRaises(ValueError, it.combinations_with_replacement, self.string1, -3) # testing ValueError: 'r' argument is a negative number
+		self.assertRaises(MemoryError, it.combinations_with_replacement, self.string1, 3**20) # testing MemoryError: operation runs out of memory because the groups are too large
+
+
+	def testCycle(self):
+		self.assertEqual(list(it.islice(cycle(self.string1), 10)), list("ABCDABCDAB")) # testing a string
+		self.assertEqual(list(it.islice(cycle(self.numList1), 13)), [1,2,3,4,5,6,7,1,2,3,4,5,6]) # testing a list of nummbers
+		self.assertEqual(list(it.islice(cycle(self.multiList2), 8)), [2,'',(2,4),"Hello",5,2,'',(2,4)]) # testing a polymorphic list
+		self.assertEqual(list(it.islice(cycle(""), 4)), list("")) # testing with an empty string and multiple cycles
+		self.assertEqual(list(it.islice(cycle(self.string1), 0)), list("")) #testing a string with 0 cycles
+
+		self.assertRaises(TypeError, cycle, 3) # testing TypeError: argument is not an iterable
+		self.assertRaises(TypeError, cycle, self.string1, 4) #testing TypeError: extra argument
+		self.assertRaises(TypeError, cycle) # testing TypeError: no argument given
 
 if __name__ == '__main__':
     unittest.main()
