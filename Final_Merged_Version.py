@@ -1,3 +1,4 @@
+import itertools as it
 from itertools import *
 import unittest
 import operator
