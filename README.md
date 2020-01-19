@@ -15,3 +15,9 @@
 | Combinations | Borja | Black and White|
 | Combinations with replacement | Borja | Black|
 | cycle | Borja | Black|
+| Permutations | Anwar | Black|
+| filterfalse | Anwar | Black|
+| groupby | Anwar | Black|
+| Repeat | Julie | Black|
+| chain | Julie | Black|
+| product | Julie | Black|
