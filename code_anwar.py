@@ -6,7 +6,6 @@ def permutest(x):
     list = []
     for i in permutations(x, 3):
         list.append(i)
-    print(list)
     return list
 
 
@@ -20,7 +19,6 @@ def grouptest(g):
         grouped[i] = list(v)
         listk.append(grouped[i])
 
-    print(listk)
     return listk
 
 
@@ -62,9 +60,6 @@ def fitest(f):
 
     if f==['']:
         n = (filterfalse(lambda x: x == 'apple', ['']))
-
-
-
 
     return list(n)
 
